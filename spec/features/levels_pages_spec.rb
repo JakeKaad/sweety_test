@@ -25,8 +25,6 @@ describe "adding a new level" do
       delete_last_entry
     end
 
-    # I need help on this one. This would be simple with a test database.
-
     it "shouldn't let you add more than 4 for one day" do
       click_on "Levels"
       add_four_entries
@@ -42,14 +40,3 @@ describe "adding a new level" do
   end
 end
 
-def add_four_entries
-  4.times do
-    add_new_entry
-  end
-end
-
-def delete_four_entries
-  4.times do
-    delete_last_entry
-  end
-end
