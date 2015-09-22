@@ -36,9 +36,9 @@ bundle exec rspec
 ```
 
 ###Feature requests:
-* Add a validation that prevent users from being able to add entries for the future
-  This should look like:
-    `validates_date :date_earned, on_or_before: lamda { Time.current.to_date }`
+* Add a validation that prevent users from being able to add entries for the future.
+  This looks like:
+    `validates_date :date_of_entry, on_or_before: lamda { Time.current.to_date }`
 
 
 ###Suggested changes:
