@@ -8,9 +8,7 @@ describe "adding a new level" do
 
   context "as an authenticated user" do
     before do
-      Capybara.register_driver :selenium do |app|
-        Capybara::Selenium::Driver.new(app, :browser => :chrome)
-      end
+      set_selenium
       login
     end
 
@@ -29,17 +27,18 @@ describe "adding a new level" do
 
     # I need help on this one. This would be simple with a test database.
 
-    # it "shouldn't let you add more than 4 for one day" do
-    #   click_on "Levels"
-    #   add_four_entries
-    #   expect(page).to have_content "Entry was successfully created."
+    it "shouldn't let you add more than 4 for one day" do
+      click_on "Levels"
+      add_four_entries
+      expect(page).to have_content "Entry was successfully created."
 
-    #   add_new_entry
-    #   expect(page).to have_content "Maximum entries reached for this date."
+      add_new_entry
+      expect(page).to have_content "Maximum entries reached for this date."
 
-    #   click_on "Levels"
-    #   delete_four_entries
-    # end
+      click_on "Levels"
+      delete_four_entries
+      expect(page).to have_content("None available")
+    end
   end
 end
 

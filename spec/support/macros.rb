@@ -19,3 +19,9 @@ def add_new_entry
   fill_in "Level", with: 80
   click_on "Submit"
 end
+
+def set_selenium
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+end
