@@ -23,12 +23,6 @@ def add_new_entry(amount=nil, time=nil)
   click_on "Submit"
 end
 
-def set_selenium
-  Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
-  end
-end
-
 def add_four_entries(amounts=nil, time=nil)
   amounts ||= [80, 85, 90, 95]
   amounts.each do |level_amount|
@@ -36,8 +30,11 @@ def add_four_entries(amounts=nil, time=nil)
   end
 end
 
-def delete_four_entries
-  4.times do
+def delete_all_entries
+  click_on "Levels"
+  begin
     delete_last_entry
+    delete_all_entries
+  rescue Capybara::ElementNotFound
   end
 end

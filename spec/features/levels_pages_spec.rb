@@ -7,10 +7,8 @@ describe "adding a new level" do
   end
 
   context "as an authenticated user" do
-    before do
-      set_selenium
-      login
-    end
+    before { login }
+    after { delete_all_entries }
 
     it "should be able to navigate via the sidebar link" do
       click_on "Levels"
@@ -22,7 +20,6 @@ describe "adding a new level" do
       add_new_entry
       expect(page).to have_content "Entry was successfully created."
       expect(page).to have_content "80 mg/dl"
-      delete_last_entry
     end
 
     it "shouldn't let you add more than 4 for one day" do
@@ -34,8 +31,6 @@ describe "adding a new level" do
       expect(page).to have_content "Maximum entries reached for this date."
 
       click_on "Levels"
-      delete_four_entries
-      expect(page).to have_content("None available")
     end
   end
 end

@@ -15,4 +15,4 @@ Chrome webdriver
 
 
 ###Bugs:
-* Daily reporting is looking for entries recorded tomorrow.
+* Daily reporting is reporting entries recorded in the future
