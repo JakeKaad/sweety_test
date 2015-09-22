@@ -36,5 +36,6 @@ def delete_all_entries
     delete_last_entry
     delete_all_entries
   rescue Capybara::ElementNotFound
+    expect(page).to have_content "None available"
   end
 end
