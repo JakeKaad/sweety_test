@@ -10,7 +10,7 @@ def login
 end
 
 def delete_last_entry
-  click_on "Delete"
+  find(:xpath, "//tbody/tr[1]/td[2]/a").click
   page.driver.browser.switch_to.alert.accept
 end
 
